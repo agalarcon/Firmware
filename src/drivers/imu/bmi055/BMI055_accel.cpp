@@ -159,7 +159,7 @@ int BMI055_accel::reset()
 	write_reg(BMI055_ACC_SOFTRESET, BMI055_SOFT_RESET);//Soft-reset
 	up_udelay(5000);
 
-	write_checked_reg(BMI055_ACC_BW,    BMI055_ACCEL_BW_1000); //Write accel bandwidth
+	write_checked_reg(BMI055_ACC_BW,    BMI055_ACCEL_BW_62_5); //Write accel bandwidth (DLPF)
 	write_checked_reg(BMI055_ACC_RANGE,     BMI055_ACCEL_RANGE_2_G);//Write range
 	write_checked_reg(BMI055_ACC_INT_EN_1,      BMI055_ACC_DRDY_INT_EN); //Enable DRDY interrupt
 	write_checked_reg(BMI055_ACC_INT_MAP_1,     BMI055_ACC_DRDY_INT1); //Map DRDY interrupt on pin INT1
@@ -214,47 +214,33 @@ BMI055_accel::probe()
 int
 BMI055_accel::accel_set_sample_rate(float frequency)
 {
-	uint8_t setbits = 0;
-	uint8_t clearbits = BMI055_ACCEL_BW_1000;
-
 	if (frequency < (3125 / 100)) {
-		setbits |= BMI055_ACCEL_BW_7_81;
 		_accel_sample_rate = 1563 / 100;
 
 	} else if (frequency < (625 / 10)) {
-		setbits |= BMI055_ACCEL_BW_15_63;
 		_accel_sample_rate = 625 / 10;
 
 	} else if (frequency < (125)) {
-		setbits |= BMI055_ACCEL_BW_31_25;
 		_accel_sample_rate = 625 / 10;
 
 	} else if (frequency < 250) {
-		setbits |= BMI055_ACCEL_BW_62_5;
 		_accel_sample_rate = 125;
 
 	} else if (frequency < 500) {
-		setbits |= BMI055_ACCEL_BW_125;
 		_accel_sample_rate = 250;
 
 	} else if (frequency < 1000) {
-		setbits |= BMI055_ACCEL_BW_250;
 		_accel_sample_rate = 500;
 
 	} else if (frequency < 2000) {
-		setbits |= BMI055_ACCEL_BW_500;
 		_accel_sample_rate = 1000;
 
 	} else if (frequency >= 2000) {
-		setbits |= BMI055_ACCEL_BW_1000;
 		_accel_sample_rate = 2000;
 
 	} else {
 		return -EINVAL;
 	}
-
-	/* Write accel ODR */
-	modify_reg(BMI055_ACC_BW, clearbits, setbits);
 
 	return OK;
 }

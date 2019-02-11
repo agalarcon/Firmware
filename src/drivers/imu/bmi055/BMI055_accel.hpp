@@ -109,7 +109,7 @@
 // BMI055 Accelerometer Chip-Id
 #define BMI055_ACC_WHO_AM_I         0xFA
 
-//BMI055_ACC_BW           0x10
+// DLPF filter bandwidth settings
 #define BMI055_ACCEL_BW_7_81      (1<<3) | (0<<2) | (0<<1) | (0<<0)
 #define BMI055_ACCEL_BW_15_63     (1<<3) | (0<<2) | (0<<1) | (1<<0)
 #define BMI055_ACCEL_BW_31_25     (1<<3) | (0<<2) | (1<<1) | (0<<0)
