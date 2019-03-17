@@ -20,18 +20,19 @@ px4_add_board(
 	DRIVERS
 		barometer # all available barometer drivers
 		batt_smbus
-		camera_trigger
 		camera_capture
+		camera_trigger
 		differential_pressure # all available differential pressure drivers
 		distance_sensor # all available distance sensor drivers
 		gps
 		#heater
 		imu/adis16448
+		imu/adis16497
 		#imu # all available imu drivers
 		imu/bmi055
+		imu/icm20948
 		imu/mpu6000
 		imu/mpu9250
-		imu/icm20948
 		irlock
 		lights/blinkm
 		lights/oreoled
@@ -119,9 +120,10 @@ px4_add_board(
 		hwtest # Hardware test
 		#matlab_csv_serial
 		position_estimator_inav
-		px4_mavlink_debug # Tutorial code from https://px4.io/dev/debug_values
-		px4_simple_app # Tutorial code from https://px4.io/dev/px4_simple_app
+		px4_mavlink_debug # Tutorial code from http://dev.px4.io/en/debug/debug_values.html
+		px4_simple_app # Tutorial code from http://dev.px4.io/en/apps/hello_sky.html
 		rover_steering_control # Rover example app
 		segway
 		uuv_example_app
+
 	)

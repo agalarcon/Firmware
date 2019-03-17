@@ -650,8 +650,9 @@ PARAM_DEFINE_FLOAT(MPC_LAND_ALT2, 5.0f);
  *
  * Increasing this value will make automatic and manual takeoff slower.
  * If it's too slow the drone might scratch the ground and tip over.
+ * A time constant of 0 disables the ramp
  *
- * @min 0.1
+ * @min 0
  * @max 1
  * @group Multicopter Position Control
  */
@@ -704,16 +705,7 @@ PARAM_DEFINE_INT32(MPC_AUTO_MODE, 1);
 PARAM_DEFINE_FLOAT(MPC_SPOOLUP_TIME, 0.0f);
 
 /**
- * Flag to enable obstacle avoidance
- * Temporary Parameter to enable interface testing
- *
- * @boolean
- * @group Multicopter Position Control
- */
-PARAM_DEFINE_INT32(MPC_OBS_AVOID, 0);
-
-/**
- * Yaw mode
+ * Yaw mode.
  *
  * Specifies the heading in Auto.
  *
@@ -726,4 +718,3 @@ PARAM_DEFINE_INT32(MPC_OBS_AVOID, 0);
  * @group Mission
  */
 PARAM_DEFINE_INT32(MPC_YAW_MODE, 0);
-
