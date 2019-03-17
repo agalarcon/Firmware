@@ -45,7 +45,6 @@ px4_add_romfs_files(
 	claire.aux.mix
 	claire.main.mix
 	coax.main.mix
-	control_surfaces.aux.mix
 	delta.main.mix
 	deltaquad.main.mix
 	dodeca_bottom_cox.aux.mix
